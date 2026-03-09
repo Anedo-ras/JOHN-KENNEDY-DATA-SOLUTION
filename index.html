@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Kennedy Data Solutions · fresh design</title>
+    <!-- Font Awesome 6 (free) for subtle icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f0f5fb 0%, #e6edf4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* main card – clean, spacious, elevated */
+        .price-card {
+            max-width: 1320px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2.5rem 2.5rem 2rem 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 32, 64, 0.25), 0 8px 18px rgba(0,40,70,0.1);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* header – fresh navy & gold accent */
+        .brand-header {
+            background: #0b2a3e;  /* deep ocean */
+            padding: 1.8rem 2.5rem 1.4rem 2.5rem;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            border-bottom: 6px solid #f8b042; /* warm amber */
+        }
+
+        .brand-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-name i {
+            color: #f8b042;
+            font-size: 2rem;
+            background: #1f4a6e;
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 12px -6px #051e2b;
+        }
+
+        .till-info {
+            background: #1f4a6e;
+            padding: 0.75rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+        }
+
+        .till-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .till-info i {
+            color: #f8b042;
+            width: 24px;
+            font-size: 1.2rem;
+        }
+
+        .till-info .divider {
+            width: 2px;
+            height: 28px;
+            background: #3c6e91;
+            margin: 0 6px;
+        }
+
+        .helpline-new {
+            background: #f8b042;
+            color: #0b2a3e;
+            padding: 0.35rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            border: 2px solid #ffd966;
+        }
+
+        /* sections container */
+        .offers-container {
+            padding: 2.2rem 2.2rem 2rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            background: #f9fcff;
+        }
+
+        /* category headings */
+        .category {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cat-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 650;
+            color: #0b2a3e;
+            border-bottom: 3px dashed #b9d4e7;
+            padding-bottom: 0.3rem;
+        }
+
+        .cat-title i {
+            background: #1f4a6e;
+            color: white;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 6px 12px -6px #0b2a3e;
+        }
+
+        /* offer grids – crisp, balanced, modern */
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem 1.2rem;
+        }
+
+        .offer-item {
+            background: white;
+            border-radius: 28px;
+            padding: 1.1rem 1rem 1rem 1.4rem;
+            box-shadow: 0 6px 14px rgba(0, 33, 65, 0.05), 0 2px 4px rgba(0,0,0,0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.15s, box-shadow 0.2s;
+            border: 1px solid #eef3f9;
+        }
+
+        .offer-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -12px rgba(11, 42, 62, 0.15);
+            border-color: #cbddee;
+            background: #ffffff;
+        }
+
+        .offer-desc {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #163a4f;
+            line-height: 1.3;
+        }
+
+        .offer-desc .highlight {
+            font-weight: 800;
+            color: #0b2a3e;
+            background: #f0f7fd;
+            padding: 0.1rem 0.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .offer-price {
+            background: #f8b042;
+            color: #0b2a3e;
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 0.6rem 0.9rem;
+            border-radius: 40px;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 6px 10px -6px #b57c2a;
+            border: 1px solid #ffe3a3;
+            letter-spacing: 0.3px;
+        }
+
+        .offer-price small {
+            font-size: 0.7rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* minute & sms grids can share same style, but we keep separate */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1rem;
+        }
+
+        .footer-call {
+            margin-top: 1.2rem;
+            background: #e2eefb;
+            border-radius: 60px;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border: 2px solid white;
+            box-shadow: inset 0 1px 4px #bdd4e8;
+        }
+
+        .call-btn {
+            background: #0b2a3e;
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 16px -8px #0b2a3e;
+            border: 2px solid #f8b042;
+            transition: 0.15s;
+        }
+
+        .call-btn i {
+            color: #f8b042;
+            font-size: 1.8rem;
+        }
+
+        .call-btn:hover {
+            background: #123e59;
+            transform: scale(1.02);
+            border-color: #ffd27f;
+        }
+
+        .legacy-note {
+            color: #2d5779;
+            font-weight: 500;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.7);
+            padding: 0.2rem 1.5rem;
+            border-radius: 60px;
+        }
+
+        /* remove duplicate minute line (two identical 20mins offers) but keep them as separate items — we respect original */
+        /* but we can differentiate with tiny badge */
+        .duplicate-tag {
+            background: #dbeafe;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            margin-left: 6px;
+            font-weight: 500;
+            color: #035e8f;
+        }
+
+        /* responsive touches */
+        @media (max-width: 650px) {
+            .brand-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .till-info {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .helpline-new {
+                font-size: 1.1rem;
+            }
+            .offer-item {
+                flex-wrap: wrap;
+                gap: 0.6rem;
+            }
+            .offer-price {
+                width: 100%;
+                text-align: center;
+            }
+            .footer-call {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .call-btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="price-card">
+    <!-- HEADER with new name & helpline -->
+    <div class="brand-header">
+        <div class="brand-name">
+            <i class="fas fa-chart-line"></i> 
+            JOHN KENNEDY <span style="font-weight:300; color:#c7e2f5;">DATA SOLUTION</span>
+        </div>
+        <div class="till-info">
+            <span><i class="fas fa-receipt"></i> TILL 3347213</span>
+            <span class="divider"></span>
+            <span><i class="fas fa-headset"></i> 0745871285 <span style="font-size:0.8rem; margin-left:5px; opacity:0.9;"></span></span>
+        </div>
+    </div>
+
+    <!-- MAIN OFFERS (exactly the same structure, same values) -->
+    <div class="offers-container">
+        <!-- DATA OFFERS section -->
+        <div class="category">
+            <div class="cat-title">
+                <i class="fas fa-wifi"></i> Data bundles
+            </div>
+            <div class="offer-grid">
+                <!-- exactly from the list, keep all -->
+                <div class="offer-item"><span class="offer-desc">1.5 GB <span class="highlight">3 HRS</span></span> <span class="offer-price">KSH.49</span></div>
+                <div class="offer-item"><span class="offer-desc">350 MBS <span class="highlight">7 DAYS</span></span> <span class="offer-price">KSH.47</span></div>
+                <div class="offer-item"><span class="offer-desc">2.5 GB <span class="highlight">7 DAYS</span></span> <span class="offer-price">KSH.300</span></div>
+                <div class="offer-item"><span class="offer-desc">6 GB <span class="highlight">7 DAYS</span></span> <span class="offer-price">KSH.700</span></div>
+                <div class="offer-item"><span class="offer-desc">1 GB <span class="highlight">1 HR</span></span> <span class="offer-price">KSH.19</span></div>
+                <div class="offer-item"><span class="offer-desc">250 MBS <span class="highlight">24 HRS</span></span> <span class="offer-price">KSH.20</span></div>
+                <div class="offer-item"><span class="offer-desc">1 GB <span class="highlight">24 HRS</span></span> <span class="offer-price">KSH.99</span></div>
+                <div class="offer-item"><span class="offer-desc">1.25 GB <span class="highlight">UNTIL MIDNIGHT</span></span> <span class="offer-price">KSH.55</span></div>
+                <div class="offer-item"><span class="offer-desc">1 GB <span class="highlight">1HR UNLIMITED</span></span> <span class="offer-price">KSH.23</span></div>
+                <div class="offer-item"><span class="offer-desc">1.5 GB <span class="highlight">3HRS UNLIMITED</span></span> <span class="offer-price">KSH.52</span></div>
+                <div class="offer-item"><span class="offer-desc">2 GB <span class="highlight">24 HRS</span></span> <span class="offer-price">KSH.110</span></div>
+                <!-- note: original had 11 data offers, we have all. -->
+            </div>
+        </div>
+
+        <!-- MINUTES OFFERS -->
+        <div class="category">
+            <div class="cat-title">
+                <i class="fas fa-phone-alt"></i> Minutes
+            </div>
+            <div class="two-col-grid">
+                <!-- two identical 20 mins 2hrs? keep both, add subtle visual cue (duplicate) but preserve offers exactly -->
+                <div class="offer-item"><span class="offer-desc">20 MINS <span class="highlight">2HRS</span></span> <span class="offer-price">KSH.22</span></div>
+                <div class="offer-item"><span class="offer-desc">20 MINS <span class="highlight">2HRS</span> <span class="duplicate-tag">extra</span></span> <span class="offer-price">KSH.21</span></div>
+                <div class="offer-item"><span class="offer-desc">43 MINS <span class="highlight">3HRS</span></span> <span class="offer-price">KSH.24</span></div>
+                <div class="offer-item"><span class="offer-desc">50 MINS <span class="highlight">UNTIL MIDNIGHT</span></span> <span class="offer-price">KSH.51</span></div>
+            </div>
+        </div>
+
+        <!-- SMS OFFERS -->
+        <div class="category">
+            <div class="cat-title">
+                <i class="fas fa-envelope"></i> SMS bundles
+            </div>
+            <div class="two-col-grid">
+                <div class="offer-item"><span class="offer-desc">20 SMS <span class="highlight">DAILY UNLIMITED</span></span> <span class="offer-price">KSH.5</span></div>
+                <div class="offer-item"><span class="offer-desc">200 SMS <span class="highlight">DAILY UNLIMITED</span></span> <span class="offer-price">KSH.10</span></div>
+                <div class="offer-item"><span class="offer-desc">1000 SMS <span class="highlight">WEEKLY</span></span> <span class="offer-price">KSH.30</span></div>
+                <div class="offer-item"><span class="offer-desc">1500 SMS <span class="highlight">WEEKLY</span></span> <span class="offer-price">KSH.105</span></div>
+                <div class="offer-item"><span class="offer-desc">3500 SMS <span class="highlight">MONTHLY</span></span> <span class="offer-price">KSH.210</span></div>
+            </div>
+        </div>
+
+        <!-- FOOTER with new helpline & prominent call action, and original till (as per header) we also keep legacy till mention? header includes it, footer reinforces helpline -->
+        <div class="footer-call">
+            <div class="legacy-note">
+                <i class="fas fa-check-circle" style="color:#0b2a3e;"></i> TILL 3347213 
+            </div>
+            <a href="tel:0745871285" class="call-btn" style="text-decoration: none; cursor: pointer;">
+                <i class="fas fa-headset"></i> 0745871285
+            </a>
+        </div>
+        
+        <!-- tiny note: design consistent, all offers preserved -->
+        <div style="font-size:0.8rem; color:#4d6f89; text-align:center; padding-top:0.2rem; border-top: 1px solid #cfe1f0; margin-top:0.3rem;">
+            ⚡ same great offers · fresh look · John Kennedy Data Solution
+        </div>
+    </div>
+</div>
+</body>
+</html>
